@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+        window.OneSignalDeferred = window.OneSignalDeferred || [];
+        OneSignalDeferred.push(async function(OneSignal) {
+            await OneSignal.init({
+                appId: "6c5caaa8-2aae-433e-a9ed-d6bff9f1209a",
+                safari_web_id: "web.onesignal.auto.110555e6-7aae-4d44-9896-bfe7a2b1c987",
+                notifyButton: {
+                    enable: true,
+                },
+            });
+        });
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RolexCoderZ</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom right, #1e3c72, #2a5298);
+            color: #fff;
+        }
+
+        header {
+            background: linear-gradient(to right, #ff8c00, #ff0080);
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            width: calc(100% - 20px);
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+        }
+
+        .header-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-left: 10px;
+            color: #ffffff;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        header img {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+
+        .content-container {
+            margin-top: 80px;
+            padding: 40px 20px;
+        }
+
+        #lectures {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .content-card {
+            background: linear-gradient(135deg, #ffd700, #ffa500);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .content-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        .content-thumbnail {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid #000000;
+        }
+
+        .details {
+            padding: 20px;
+        }
+
+        .details h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #000;
+        }
+
+        .details p {
+            font-size: 1em;
+            color: #333;
+        }
+
+        .link-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-align: center;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #fff;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .link-btn:hover {
+            transform: scale(1.1);
+            background: linear-gradient(to right, #2575fc, #6a11cb);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(to right, #000000, #434343);
+            color: #FFD700;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.7);
+            margin-top: 40px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 1.2rem;
+            }
+
+            .content-card {
+                height: auto;
+            }
+
+            .details h3 {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="javascript:history.back()"><img src="https://th.bing.com/th/id/R.757dcae10509bdbcbbbe7231f9cec8ab?rik=7RO2A7Du7jYBww&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fleft-arrow-png-left-icon-1600.png&ehk=nQr%2fWbRJHtKEaV53ijq71OpNptgpG4FZxnChrIO0fBI%3d&risl=&pid=ImgRaw&r=0" alt="Back"></a>
+        <span class="header-title">RolexCoderZ</span>
+    </header>
+
+    <div class="content-container">
+        <div id="lectures">
+            <div class="content-card">
+                <img src="https://cf-images.ap-southeast-1.prod.boltdns.net/v1/jit/6415636611001/3959f79f-d984-4871-91c1-a437f77ffce4/main/160x90/44s64ms/match/image.jpg" class="content-thumbnail" alt="Thumbnail">
+                <div class="details">
+                    <h3>Welcome Video</h3>
+                    <p>Date: 2024-11-16</p>
+                    <a href="play.html?id=6364792496112" class="link-btn">Watch Now!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        © 2024 Study Buddy. All Rights Reserved.
+    </footer>
+
+</body>
+
+</html>
