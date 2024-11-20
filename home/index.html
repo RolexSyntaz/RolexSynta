@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batch Detail ~ Abhay 2025 Batch</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Reset and Font */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #f9f9f9, #ececec);
+            color: #333;
+        }
+
+        /* Container */
+        .page-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(45deg, #ffdd00, #ffd700);
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #ccc;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header img {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+
+        .header-title {
+            margin-left: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 80px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .course-header {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .course-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        /* Subjects Section */
+        .subjects-section {
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 40px;
+        }
+
+        .subjects-section h2 {
+            font-size: 24px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        .subjects-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        /* Subject Cards */
+        .subject-card {
+            text-decoration: none;
+            background: linear-gradient(135deg, #fefefe, #f5f5f5);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 220px;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .subject-card img {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 10px;
+        }
+
+        .subject-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            margin-top: auto;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .course-title {
+                font-size: 20px;
+            }
+            .subject-card {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- Header -->
+        <header>
+            <a href="javascript:history.back()">
+                <img src="https://th.bing.com/th/id/R.757dcae10509bdbcbbbe7231f9cec8ab?rik=7RO2A7Du7jYBww&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fleft-arrow-png-left-icon-1600.png&ehk=nQr%2fWbRJHtKEaV53ijq71OpNptgpG4FZxnChrIO0fBI%3d&risl=&pid=ImgRaw&r=0" alt="Back">
+            </a>
+            <span class="header-title">RolexCoderZ</span>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Batch Title Box -->
+            <div class="course-header">
+                <h1 class="course-title">Abhay 2025 Batch</h1>
+            </div>
+
+            <!-- Subjects Section -->
+            <section class="subjects-section">
+                <h2>Subjects</h2>
+                <div class="subjects-grid">
+                    <a href="Notices.html" class="subject-card">
+                        <img src="https://static.vecteezy.com/system/resources/previews/022/119/017/original/notice-icon-png.png" alt="Notices">
+                        <p class="subject-title">Notices</p>
+                    </a>
+                    <a href="Mathematics.html" class="subject-card">
+                        <img src="https://cdn.vectorstock.com/i/preview-1x/38/34/math-science-education-color-icon-vector-47173834.jpg" alt="Mathematics">
+                        <p class="subject-title">Mathematics</p>
+                    </a>
+                    <a href="Science.html" class="subject-card">
+                        <img src="https://cdn-icons-png.flaticon.com/256/7918/7918229.png" alt="Science">
+                        <p class="subject-title">Science</p>
+                    </a>
+                    <a href="Sst.html" class="subject-card">
+                        <img src="https://www.pinclipart.com/picdir/big/36-364429_social-clip-art-classroom-transprent-png-free-subject.png" alt="Social Studies">
+                        <p class="subject-title">Social Studies</p>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            &copy; 2025 Aarambh Batch
+        </footer>
+    </div>
+</body>
+</html>
