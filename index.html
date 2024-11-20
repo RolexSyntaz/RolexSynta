@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RolexCoderZ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+    <script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background: linear-gradient(45deg, #1e90ff, #ff69b4);
+            color: #fff;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 1rem 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffcc00;
+            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.8), 2px 2px 15px rgba(0, 0, 0, 0.5);
+            animation: flash 3s infinite alternate;
+        }
+
+        @keyframes flash {
+            0% { color: #ffcc00; }
+            50% { color: #ff69b4; }
+            100% { color: #1e90ff; }
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding-top: 80px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .batch-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            width: 320px;
+            position: relative;
+            transform: scale(1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .batch-card:hover {
+            transform: scale(1.05);
+        }
+
+        .batch-card img {
+            width: 100%;
+            height: auto;
+            border-bottom: 3px solid #ff69b4;
+        }
+
+        .batch-info {
+            padding: 20px;
+            text-align: left;
+        }
+
+        .batch-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(45deg, #ffcc00, #ff69b4);
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .price-section {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        .original-price {
+            font-size: 1rem;
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .button {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .explore {
+            background: linear-gradient(45deg, #1e90ff, #ff69b4);
+        }
+
+        .explore:hover {
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.7);
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <header>
+        <a href="javascript:history.back()">
+            <img src="https://pluspng.com/img-png/left-arrow-png-left-icon-1600.png" alt="Back" class="icon">
+        </a>
+        <span class="header-title">RolexCoderZ</span>
+    </header>
+
+    <div class="container">
+        <div class="batch-card">
+            <div class="badge">NEW</div>
+            <img src="https://sina2s3.appextech.net/eaf754c93c304f27bd6a7931d6ef358a:nexttopper/batch/673876ec82062_abhay_10th_banner_app.png" alt="Batch Image">
+            <div class="batch-info">
+                <div class="batch-title">Abhay 2025 - Class 10th</div>
+                <div class="price-section">
+                    <span class="price">₹Free</span>
+                    <span class="original-price">₹1500</span>
+                </div>
+                <div class="buttons">
+                    <a href="/Next-toppers/Abhay-2025/index.html" class="button explore">Let's Study</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        particlesJS.load('particles-js', 'https://cdn.jsdelivr.net/particles.js/2.0.0/particles.json', function () {
+            console.log('Particles.js config loaded');
+        });
+    </script>
+</body>
+</html>
