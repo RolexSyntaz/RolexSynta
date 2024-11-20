@@ -3,100 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RolexCoderZ</title>
+    <title>My Batches</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
-    <script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool"></script>
-    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
     <style>
         body {
             font-family: 'Poppins', Arial, sans-serif;
-            background: linear-gradient(45deg, #1e90ff, #ff69b4);
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
             color: #fff;
             margin: 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
-            background: transparent; /* Ensure it's transparent */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
         }
 
         header {
-            background: rgba(0, 0, 0, 0.7);
+            background: linear-gradient(90deg, #ff9a9e 0%, #fecfef 100%);
             padding: 1rem 10px;
             display: flex;
+            justify-content: start;
             align-items: center;
-            justify-content: space-between;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+            height: 60px;
+            width: 100%;
             position: fixed;
             top: 10px;
-            left: 10px;
-            right: 10px;
+            left: 0;
+            right: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
         }
 
         .header-title {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #ffcc00;
-            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.8), 2px 2px 15px rgba(0, 0, 0, 0.5);
-            animation: flash 3s infinite alternate;
-        }
-
-        @keyframes flash {
-            0% { color: #ffcc00; }
-            50% { color: #ff69b4; }
-            100% { color: #1e90ff; }
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #333;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         .container {
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
+            max-width: 1200px;
             justify-content: center;
-            padding-top: 80px;
-            z-index: 2;
-            position: relative;
+            padding-top: 100px;
         }
 
         .batch-card {
-            background: rgba(255, 255, 255, 0.9);
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
             border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             width: 320px;
+            border: none;
             position: relative;
-            transform: scale(1);
-            transition: transform 0.3s ease-in-out;
-            z-index: 2; /* Ensure cards appear above particles */
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .batch-card:hover {
-            transform: scale(1.05);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
 
         .batch-card img {
             width: 100%;
-            height: auto;
-            border-bottom: 3px solid #ff69b4;
+            height: 180px;
+            object-fit: cover;
         }
 
         .batch-info {
             padding: 20px;
-            text-align: left;
+            text-align: center;
         }
 
         .batch-title {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.4rem;
+            font-weight: 700;
             color: #333;
         }
 
@@ -104,132 +88,128 @@
             position: absolute;
             top: 15px;
             right: 15px;
-            background: linear-gradient(45deg, #ffcc00, #ff69b4);
-            color: #fff;
+            background-color: #ffcc00;
+            color: #333;
             font-size: 0.9rem;
             font-weight: bold;
             padding: 5px 10px;
-            border-radius: 5px;
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+        }
+
+        .description {
+            font-size: 1rem;
+            color: #444;
+            margin: 10px 0;
         }
 
         .price-section {
-            margin-top: 15px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            margin: 15px 0;
         }
 
         .price {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: bold;
             color: #28a745;
         }
 
         .original-price {
-            font-size: 1rem;
-            text-decoration: line-through;
+            font-size: 0.9rem;
             color: #999;
+            text-decoration: line-through;
+        }
+
+        .discount {
+            background-color: #dff0d8;
+            color: #28a745;
+            font-size: 0.9rem;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: bold;
         }
 
         .buttons {
             display: flex;
             gap: 10px;
             margin-top: 15px;
+            justify-content: center;
         }
 
         .button {
-            flex: 1;
-            text-align: center;
-            padding: 10px;
-            border-radius: 5px;
-            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 25px;
             font-size: 1rem;
+            text-decoration: none;
             font-weight: bold;
             color: #fff;
-            transition: all 0.3s ease-in-out;
+            transition: background 0.3s;
         }
 
         .explore {
-            background: linear-gradient(45deg, #1e90ff, #ff69b4);
+            background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%);
         }
 
         .explore:hover {
-            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.7);
+            background: linear-gradient(90deg, #f5576c 0%, #f093fb 100%);
+        }
+
+        .buy-now {
+            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .buy-now:hover {
+            background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
         }
     </style>
 </head>
+
 <body>
-    <div id="particles-js"></div>
     <header>
-        <a href="javascript:history.back()">
-            <img src="https://pluspng.com/img-png/left-arrow-png-left-icon-1600.png" alt="Back" class="icon">
-        </a>
+        <a href="javascript:history.back()"><img src="https://ar-hosting.pages.dev/1732101944010.jpg" alt="Back" width="32" height="32"></a>
         <span class="header-title">RolexCoderZ</span>
     </header>
 
     <div class="container">
+        <!-- Batch Card -->
         <div class="batch-card">
-            <div class="badge">NEW</div>
-            <img src="https://sina2s3.appextech.net/eaf754c93c304f27bd6a7931d6ef358a:nexttopper/batch/673876ec82062_abhay_10th_banner_app.png" alt="Batch Image">
+            <div class="badge">New</div>
+            <img src="https://sina2s3.appextech.net/eaf754c93c304f27bd6a7931d6ef358a:nexttopper/batch/673876ec82062_abhay_10th_banner_app.png" alt="Abhay 2025 Class 10th">
             <div class="batch-info">
                 <div class="batch-title">Abhay 2025 - Class 10th</div>
+                <div class="description">For Class 10th CBSE Students</div>
                 <div class="price-section">
-                    <span class="price">₹Free</span>
-                    <span class="original-price">₹1500</span>
+                    <div>
+                        <span class="price">₹Free</span>
+                        <span class="original-price">₹1500</span>
+                    </div>
+                    <span class="discount">100% Discount</span>
                 </div>
                 <div class="buttons">
-                    <a href="/Next-toppers/Abhay-2025/index.html" class="button explore">Let's Study</a>
+                    <a href="home" class="button explore">Let's Study</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="batch-card">
+            <div class="badge">New</div>
+            <img src="https://i.ytimg.com/vi/cFK4To0gr7Y/hq720.jpg" alt="Aarambh 2025 Class 10th">
+            <div class="batch-info">
+                <div class="batch-title">Aarambh 2025 - Class 10th</div>
+                <div class="description">For Class 10th CBSE Students</div>
+                <div class="price-section">
+                    <div>
+                        <span class="price">₹Free</span>
+                        <span class="original-price">₹2499</span>
+                    </div>
+                    <span class="discount">100% Discount</span>
+                </div>
+                <div class="buttons">
+                    <a href="https://rolexcoderz.glitch.me/" class="button explore">Let's Study</a>
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        particlesJS('particles-js', {
-            "particles": {
-                "number": {
-                    "value": 80,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
-                    }
-                },
-                "color": {
-                    "value": "#ffffff"
-                },
-                "shape": {
-                    "type": "circle",
-                    "stroke": {
-                        "width": 0,
-                        "color": "#000000"
-                    },
-                },
-                "opacity": {
-                    "value": 0.5,
-                    "random": false
-                },
-                "size": {
-                    "value": 5,
-                    "random": true
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#ffffff",
-                    "opacity": 0.4,
-                    "width": 1
-                }
-            },
-            "interactivity": {
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "repulse"
-                    }
-                }
-            }
-        });
-    </script>
 </body>
 </html>
