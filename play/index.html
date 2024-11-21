@@ -1,130 +1,125 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Video - Player</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Video Player</title>
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
     <script src="https://cdn.tailwindcss.com/"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
-    <link rel="stylesheet" href="https://static.pw.live/fonts/reddit/font.css">
-    <script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./rolex.js"></script> 
     <link rel="stylesheet" href="rolex.css">
-    
-    <script src="rolex.js"></script>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+        }
+
+        .lock-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .lock-button.locked {
+            background-color: rgba(255, 0, 0, 0.7);
+        }
+
+        .plyr--hide-controls .plyr__controls {
+            display: none !important;
+        }
+    </style>
 </head>
 
 <body>
+    <button id="lockButton" class="lock-button">Lock Controls</button>
     <div id="plyr-video">
-        <video id="player" controls class="w-screen max-h-screen plyr--video z-10"></video>
+        <video id="player" controls class="w-full h-auto"></video>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             const video = document.getElementById('player');
-            console.log('Video element:', video);
+            const lockButton = document.getElementById('lockButton');
+            let controlsLocked = false;
 
-            // Function to fetch M3U8 URL with token and video ID
-            const fetchM3U8 = async () => {
-                const urlParams = new URLSearchParams(window.location.search);
-                const videoId = urlParams.get('id');
-                console.log('Video ID:', videoId);
-                if (!videoId) {
-                    Swal.fire('Error', 'Video ID is missing in the URL.', 'error');
-                    return null;
-                }
-
-                // Use the config object to construct the URL
-                const m3u8Url = CONFIG.videoUrlTemplate.replace('{videoId}', videoId) + `?bcov_auth=${CONFIG.authToken}`;
-                console.log('Constructed M3U8 URL:', m3u8Url);
-                return m3u8Url;
+            // Function to construct the video URL
+            const constructVideoUrl = (videoId) => {
+                return CONFIG.videoUrlTemplate.replace('{videoId}', videoId);
             };
 
-            const m3u8Url = await fetchM3U8();
-            if (!m3u8Url) return;
+            // Fetch video ID from the query string
+            const fetchVideoIdFromUrl = () => {
+                const params = new URLSearchParams(window.location.search);
+                return params.get('videoId');
+            };
 
-            const defaultQuality = 720; // Default quality
-            const availableQualities = [0, 240, 360, 480, 720];
-
-            // Initialize Plyr player with controls
-            const player = new Plyr(video, {
-                controls: [
-                    'play-large',
-                    'rewind',
-                    'play',
-                    'fast-forward',
-                    'progress',
-                    'current-time',
-                    'duration',
-                    'mute',
-                    'volume',
-                    'captions',
-                    'settings',
-                    'fullscreen'
-                ],
-                autoplay: true,
-                captions: { active: true, update: true },
-                speed: { options: [0.5, 1, 1.25, 1.5, 1.75, 2, 2.5, 3] },
-                tooltips: { controls: true, seek: true },
-                quality: {
-                    default: defaultQuality,
-                    options: availableQualities,
-                    forced: true,
-                    onChange: updateQuality
-                },
-                i18n: {
-                    qualityLabel: { 0: 'Auto', 240: '240p', 360: '360p', 480: '480p', 720: '720p' }
-                }
-            });
-
-            // Function to load video with specified quality
-            function loadVideoWithQuality(source) {
-                const currentTime = video.currentTime; // Get current time
-                const isPlaying = !video.paused; // Check if video is playing
+            // Initialize video player
+            const initializePlayer = async (videoUrl) => {
+                const player = new Plyr(video, {
+                    controls: [
+                        'play-large', 'rewind', 'play', 'fast-forward', 'progress', 'current-time', 'duration',
+                        'mute', 'volume', 'captions', 'settings', 'fullscreen'
+                    ],
+                    autoplay: true,
+                    captions: { active: true, update: true },
+                    tooltips: { controls: true, seek: true },
+                    fullscreen: { enabled: true, fallback: true, iosNative: true }
+                });
 
                 if (Hls.isSupported()) {
                     const hls = new Hls();
-                    hls.loadSource(source);
+                    hls.loadSource(videoUrl);
                     hls.attachMedia(video);
 
                     hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                        console.log('Manifest parsed, starting video...');
-                        video.currentTime = currentTime; // Resume from current time
-                        if (isPlaying) video.play(); // Continue playing if it was playing
+                        video.play();
                     });
 
-                    hls.on(Hls.Events.ERROR, function(event, data) {
-                        console.error('HLS Error:', data);
-                        Swal.fire('Error', 'There was an issue loading the video.', 'error');
+                    hls.on(Hls.Events.ERROR, (event, data) => {
+                        Swal.fire('Error', 'An issue occurred while loading the video.', 'error');
                     });
                 } else {
-                    console.log('HLS is not supported, falling back to native video');
-                    video.src = source;
-                    video.currentTime = currentTime;
-                    if (isPlaying) video.play();
+                    video.src = videoUrl;
+                    video.play();
                 }
-            }
+            };
 
-            // Load the initial quality
-            loadVideoWithQuality(m3u8Url);
+            // Lock/Unlock controls
+            lockButton.addEventListener('click', () => {
+                controlsLocked = !controlsLocked;
+                lockButton.textContent = controlsLocked ? 'Unlock Controls' : 'Lock Controls';
+                lockButton.classList.toggle('locked', controlsLocked);
 
-            // Update quality without reinitializing Plyr
-            function updateQuality(newQuality) {
-                const quality = newQuality === 0 ? defaultQuality : newQuality; // 0 triggers "Auto" to default quality
-                const qualitySource = m3u8Url.replace('main.m3u8', `${quality}/main.m3u8`);
-                loadVideoWithQuality(qualitySource);
+                if (controlsLocked) {
+                    video.parentElement.classList.add('plyr--hide-controls');
+                } else {
+                    video.parentElement.classList.remove('plyr--hide-controls');
+                }
+            });
+
+            // Get video ID and initialize player
+            const videoId = fetchVideoIdFromUrl();
+            if (videoId) {
+                const videoUrl = constructVideoUrl(videoId) + `?token=${CONFIG.authToken}`;
+                await initializePlayer(videoUrl);
+            } else {
+                Swal.fire('Error', 'Video ID is missing in the URL.', 'error');
             }
         });
-
-        function setFullHeight() {
-            const vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
-        }
-
-        window.addEventListener('resize', setFullHeight);
-        window.addEventListener('load', setFullHeight);
     </script>
 </body>
+
 </html>
