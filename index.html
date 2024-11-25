@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Batches</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
-    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
+    <script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool"></script>
     <style>
         body {
             font-family: 'Poppins', Arial, sans-serif;
             background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
             color: #fff;
             margin: 0;
-            display: flex;
+            display: none;
             flex-direction: column;
             align-items: center;
             padding: 20px;
@@ -155,79 +155,59 @@
             background: linear-gradient(90deg, #f5576c 0%, #f093fb 100%);
         }
 
-          .popup {
-            display: none;
+        #passwordModal {
+            display: flex;
             position: fixed;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
-            color: #333;
+            transform: translate(-50%, -50%);
+            flex-direction: column;
+            align-items: center;
             padding: 30px;
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
-            border-radius: 20px;
-            text-align: center;
-            z-index: 10000;
-            transition: all 0.4s ease;
+            background: #fff;
+            color: #333;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .popup.show {
-            display: block;
-            transform: translate(-50%, -50%) scale(1);
+        #passwordModal input {
+            padding: 10px;
+            margin: 10px 0;
+            width: 80%;
+            border: 2px solid #ddd;
+            border-radius: 5px;
         }
 
-        .popup h2 {
-            margin: 0;
-            font-size: 1.8rem;
-            color: #444;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-        }
-
-        .popup p {
-            font-size: 1rem;
-            margin: 10px 0 20px;
-            color: #555;
-        }
-
-        .popup button {
-            margin: 10px;
-            padding: 12px 20px;
+        #passwordModal button {
+            padding: 10px 20px;
             border: none;
+            background: #28a745;
+            color: white;
             font-size: 1rem;
             font-weight: bold;
-            border-radius: 25px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            border-radius: 5px;
         }
 
-        .popup button.join {
-            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
-            color: white;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .popup button.join:hover {
-            background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
-        }
-
-        .popup button.close {
-            background: #ff6666;
-            color: white;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .popup button.close:hover {
-            background: #ff4c4c;
+        #passwordModal button:hover {
+            background: #218838;
         }
     </style>
 </head>
-
 <body>
+    <div id="passwordModal">
+        <h2>Enter Password</h2>
+        <input type="password" id="passwordInput" placeholder="Enter Today's Password">
+        <button onclick="validatePassword()">Submit</button>
+        <p>Don't know the password? <a href="https://t.me/RolexCoderZApps" target="_blank">Join Our Telegram</a></p>
+    </div>
+
     <header>
         <span class="header-title">RolexCoderZ</span>
     </header>
 
     <div class="container">
+        <!-- Abhay Batch -->
         <div class="batch-card">
             <div class="badge">New</div>
             <img src="https://ar-hosting.pages.dev/1732158441292.jpg" alt="Abhay 2025 Class 10th">
@@ -247,6 +227,7 @@
             </div>
         </div>
 
+        <!-- Aarambh Batch -->
         <div class="batch-card">
             <div class="badge">New</div>
             <img src="https://i.ytimg.com/vi/cFK4To0gr7Y/hq720.jpg" alt="Aarambh 2025 Class 10th">
@@ -267,24 +248,22 @@
         </div>
     </div>
 
-        <div class="popup" id="popup">
-        <h2>Join Our Telegram Channel</h2>
-        <p>Stay updated with the latest batches, resources, and news!</p>
-        <button class="join" onclick="window.open('https://t.me/RolexCoderZApps', '_blank')">Join Now</button>
-        <button class="close" onclick="closePopup()">Close</button>
-    </div>
-
     <script>
-        // Show popup on page load with delay
-        window.onload = function () {
-            setTimeout(() => {
-                document.getElementById('popup').classList.add('show');
-            }, 1000); 
-        };
+        const todayPassword = new Date().toISOString().slice(0, 10).replace(/-/g, ""); // Today's password
+        if (localStorage.getItem('isPasswordValid') === 'true') {
+            document.body.style.display = 'flex';
+            document.getElementById('passwordModal').style.display = 'none';
+        }
 
-       
-        function closePopup() {
-            document.getElementById('popup').classList.remove('show');
+        function validatePassword() {
+            const inputPassword = document.getElementById('passwordInput').value;
+            if (inputPassword === todayPassword) {
+                document.body.style.display = 'flex';
+                document.getElementById('passwordModal').style.display = 'none';
+                localStorage.setItem('isPasswordValid', 'true');
+            } else {
+                alert('Incorrect password. Please join our Telegram for the correct password.');
+            }
         }
     </script>
 </body>
