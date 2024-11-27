@@ -1,233 +1,342 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Batch Detail ~ Aarambh 2025 Batch</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Next Topper ~ RolexCoderZ</title>
+
+    <!-- Boxicons CSS -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
-        /* Base Reset and Font */
-        body, html {
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to bottom, #1e1e2f, #2a2a3b);
-            color: #fff;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1e1e2f, #121212);
+            color: #f5f5f5;
             overflow-x: hidden;
+            transition: all 0.5s ease;
         }
 
-        /* Container */
-        .page-container {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(45deg, rgba(255, 221, 0, 0.8), rgba(255, 127, 80, 0.8));
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        header img {
-            width: 35px;
-            height: 35px;
-            cursor: pointer;
-        }
-
-        .header-title {
-            margin-left: 10px;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        /* Main Content */
-        .main-content {
-            padding: 60px 20px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            animation: fadeIn 1.2s ease-in-out;
-        }
-
-        .course-header {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
+        h1 {
+            font-size: 40px;
+            margin: 20px 0;
             text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: glow 2s ease-in-out infinite alternate;
         }
 
-        .course-title {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #ffd700;
-            background: linear-gradient(45deg, #ffdd00, #ff7f50);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px #ff416c, 0 0 20px #ff4b2b;
+            }
+
+            100% {
+                text-shadow: 0 0 20px #ff416c, 0 0 40px #ff4b2b;
+            }
         }
 
-        /* Subjects Section */
-        .subjects-section {
-            width: 100%;
-            max-width: 1200px;
-            margin-top: 40px;
-        }
-
-        .subjects-section h2 {
-            font-size: 2rem;
+        .btn-glow {
+            display: inline-block;
+            padding: 12px 28px;
+            background: linear-gradient(45deg, #ff4b2b, #ff416c);
+            color: white;
+            font-size: 18px;
             font-weight: 600;
-            text-align: center;
-            margin-bottom: 20px;
-            color: #ffd700;
-        }
-
-        .subjects-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        /* Subject Cards */
-        .subject-card {
             text-decoration: none;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-            width: 220px;
-            height: 180px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
+            border-radius: 8px;
+            transition: 0.3s;
+            box-shadow: 0 0 15px rgba(255, 75, 43, 0.6);
             position: relative;
             overflow: hidden;
         }
 
-        .subject-card::before {
-            content: '';
+        .btn-glow::before {
+            content: "";
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
-            transform: scale(1);
-            transition: transform 0.6s ease;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: skewX(-45deg);
+            transition: 0.5s;
         }
 
-        .subject-card:hover::before {
-            transform: scale(1.5);
+        .btn-glow:hover::before {
+            left: 100%;
+        }
+
+        .btn-glow:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(255, 75, 43, 0.8);
+        }
+      body {    background: linear-gradient(135deg, #1e1e2f, #121212);
+    color: #f5f5f5;
+    overflow-x: hidden;
+    transition: background 0.5s ease; /* Smooth transition for background color */
+}
+
+/* Additional styles for a smoother scroll effect */
+html {
+    scroll-behavior: smooth; /* Ensure smooth scrolling */
+}
+
+/* Optional: Add a fixed background color to prevent flicker */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #121212; /* This matches the darker part of your gradient */
+    z-index: -1; /* Keep it behind everything */
+}
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            backdrop-filter: blur(20px);
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 15px;
+            margin: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .search_box {
+            width: 60%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 8px;
+            outline: none;
+            border: none;
+            transition: 0.3s;
+        }
+
+        .search_box:focus {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 10px #ff416c;
+        }
+
+        .nav_image img {
+            width: 50px;
+            border-radius: 50%;
+            border: 2px solid #ff4b2b;
+        }
+
+        .subject-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            margin: 40px 20px;
+        }
+
+        .subject-card {
+            min-width: 260px;
+            max-width: 320px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            text-align: center;
+            overflow: hidden;
+            transition: 0.5s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .subject-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 50px rgba(255, 65, 108, 0.8);
+            transition: all 0.3s ease-in-out;
         }
 
         .subject-card img {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 10px;
-            border-radius: 50%;
+            width: 100%;
+            transition: transform 0.3s ease;
         }
 
-        .subject-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #fff;
+        .subject-card img:hover {
+            transform: scale(1.05);
         }
 
-        /* Footer */
-        footer {
+        .live-section {
             text-align: center;
-            background-color: #111;
+            margin: 30px 0;
+        }
+
+        .live-btn {
+            padding: 14px 32px;
+            background: linear-gradient(45deg, #4bff2b, #41ff6c);
             color: white;
-            padding: 15px;
-            margin-top: auto;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 20px;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(75, 255, 43, 0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from {
+        .live-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(75, 255, 43, 0.8);
+        }
+      html {  scroll-behavior: smooth; /* Enables smooth scrolling */
+}
+
+body {
+  transition: background 0.5s ease, color 0.5s ease; /* Smooth transition for background and text color changes */
+}
+
+/* Add smooth transition to subject cards */
+.subject-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Modify button hover transitions for smooth effects */
+.btn-glow {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; /* Smooth transition on hover */
+}
+
+        .telegram-popup {
+            position: fixed;
+            bottom: -100px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            animation: slideIn 0.8s ease-out forwards;
+        }
+
+        @keyframes slideIn {
+            0% {
+                bottom: -150px;
                 opacity: 0;
-                transform: translateY(20px);
             }
-            to {
+
+            100% {
+                bottom: 20px;
                 opacity: 1;
-                transform: translateY(0);
             }
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .course-title {
-                font-size: 1.8rem;
-            }
-            .subject-card {
-                width: 100%;
-                height: auto;
-            }
+        .telegram-popup h3 {
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+            color: #ff4b2b;
+        }
+
+        .telegram-popup p {
+            font-size: 14px;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .popup-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .close-popup {
+            background: #444;
+            transition: background-color 0.3s;
+        }
+
+        .close-popup:hover {
+            background-color: #666;
+        }
+
+        .toggle-dark {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #ff4b2b;
+            color: white;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255, 75, 43, 0.6);
+            transition: all 0.3s;
+        }
+
+        .toggle-dark:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 75, 43, 0.8);
         }
     </style>
 </head>
+
 <body>
-    <div class="page-container">
-        <!-- Header -->
-        <header>
-            <a href="javascript:history.back()">
-                <img src="https://th.bing.com/th/id/R.757dcae10509bdbcbbbe7231f9cec8ab?rik=7RO2A7Du7jYBww&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fleft-arrow-png-left-icon-1600.png&ehk=nQr%2fWbRJHtKEaV53ijq71OpNptgpG4FZxnChrIO0fBI%3d&risl=&pid=ImgRaw&r=0" alt="Back">
-            </a>
-            <span class="header-title">RolexCoderZ</span>
-        </header>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <div class="course-header">
-                <h1 class="course-title">Aarambh 2025 Batch</h1>
-            </div>
+    <button class="toggle-dark" onclick="toggleDarkMode()">🌙</button>
 
-            <!-- Subjects Section -->
-            <section class="subjects-section">
-                <h2>Subjects</h2>
-                <div class="subjects-grid">
-                   
-                    <a href="https://rolexcoderz.netlify.app/comingsoon" class="subject-card">
-                        <img src="https://ar-hosting.pages.dev/1732164299874.jpg" alt="Mathematics">
-                        <p class="subject-title">Mathematics</p>
-                    </a>
-                    <a href="https://rolexcoderz.netlify.app/comingsoon" class="subject-card">
-                        <img src="https://ar-hosting.pages.dev/1732164026673.jpg" alt="Science">
-                        <p class="subject-title">Science</p>
-                    </a>
-                    <a href="https://rolexcoderz.netlify.app/comingsoon" class="subject-card">
-                        <img src="https://www.pinclipart.com/picdir/big/36-364429_social-clip-art-classroom-transprent-png-free-subject.png" alt="Social Studies">
-                        <p class="subject-title">Social Science</p>
-                    </a>
-                    
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            &copy; 2025 RolexCoderZ
-        </footer>
+    <nav class="navbar">
+        <input type="text" class="search_box" placeholder="Search..." />
+        <span class="nav_image">
+            <img src="Rolex.jpg" alt="RolexCoderZ" />
+        </span>
+    </nav>
+<!--
+    <div class="live-section">
+        <h1>Live Lecture </h1>
+        <button class="live-btn" onclick="window.location.href='https://rolexcoder.serv00.net/live/'">
+            🚀 Join Now
+        </button>
     </div>
+-->
+    <main>
+        <h1>All Subjects</h1>
+        <div class="subject-container">
+            <div class="subject-card">
+                <img src="https://i.postimg.cc/JnKS1HPp/360-F-857581326-Hwnl8-S6a7-HBYBd-Qw-H9b4-Rjpw4k-Q2q-XQI.jpg" alt="Maths" />                <h2>Shobhit Nirwan - Maths</h2>
+                <a href="Mathematics" class="btn-glow">✨ Lectures</a>
+                <a href="Mathematics/Notes" class="btn-glow">📚 Notes</a>
+            </div>
+            <div class="subject-card">
+                <img src="https://i.postimg.cc/JnKS1HPp/360-F-857581326-Hwnl8-S6a7-HBYBd-Qw-H9b4-Rjpw4k-Q2q-XQI.jpg" alt="Science" />
+                <h2>Prashant Kirad - Science</h2>
+                <a href="Science" class="btn-glow">✨ Lectures</a>
+            <a href="Science/Notes" class="btn-glow">📚 Notes</a>
+          </div>
+            <div class="subject-card">
+                <img src="https://i.postimg.cc/JnKS1HPp/360-F-857581326-Hwnl8-S6a7-HBYBd-Qw-H9b4-Rjpw.jpg" alt="Social Science" />
+                <h2>Digraj Singh Rajput - Social Science</h2>
+                <a href="Sst" class="btn-glow">✨ Lectures</a>
+                 <a href="Sst/Notes" class="btn-glow">📚 Notes</a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                document.body.style.background = 'linear-gradient(135deg, #0c0c0c, #1a1a1a)';
+            } else {
+                document.body.style.background = 'linear-gradient(135deg, #1e1e2f, #121212)';
+            }
+        }
+    </script>
+
 </body>
+
 </html>
